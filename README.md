@@ -19,7 +19,7 @@ tar -xzf reddit.tar.gz
 
 Each line in the dataset contains the posts and comments of a single user in JSON format.
 
-We show a hypothetical example from the dataset below:
+Redditors can submit posts for discussion in a subreddit and they can comment on existing posts in a subreddit. We show a hypothetical example from the dataset below:
 
 ```
 {
@@ -46,7 +46,7 @@ We show a hypothetical example from the dataset below:
     {
       "created_utc": 1553035672,
       "title": "\'Gifted\' lemon-flavored pasta. What can I make with that?",
-      "selftext": "I can ever only find how to make lemon-flavored pasta or a pasta dish with lemon included. I have no idea how to build or balance a dish with this ingredient. Thank you!",
+      "selftext": "I can ever only find how to make lemon-flavored pasta or a pasta dish with lemon included. I have no idea how to build or balance a dish with this ingredient. Any suggestions would be appreciated, thank you!",
       "id": "b3446p",
       "score": 2,
       "subreddit": "Cooking"
@@ -54,6 +54,26 @@ We show a hypothetical example from the dataset below:
   ]
 }
 ```
+
+The JSON fields are:
+
+- `user_number`  - unique integer ID for each user in the corpus
+- `comments` -  list of the user's comments
+	- `created_utc` - UTC timestamp of the comment in seconds
+	- `body` - text of the comment
+	- `id` - ID for the comment
+	- `link_id` - ID of the post that the comment belongs to
+	- `score` - net upvotes for the comment
+	- `subreddit` - subreddit of the comment
+- `posts` - list of the user's posts
+	- `created_utc` - UTC timestamp of the post in seconds
+	- `title` - title of the post
+	- `selftext` - body of the post
+	- `id` - ID for the post
+	- `score` - net upvotes for the post
+	- `subreddit` - subreddit of the post
+
+Net upvotes is the total number of upvotes minus the total number of downvotes for the comment or post. 
 
 If you found this work useful, please cite:
 
